@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja - solarisMC</title>
+    <title>Loja - Solaris MC</title>
     <style>
-        /* Reset e estilos base */
+        /* ESTILOS GERAIS DA BLOCKTOPIA */
+        :root {
+            --blocktopia-primary: #FFA500;
+            --blocktopia-primary-dark: #FF8C00;
+            --blocktopia-secondary: #FFD700;
+            --blocktopia-dark: #1a1a1a;
+            --blocktopia-darker: #0d0d0d;
+            --blocktopia-light: #f8f9fa;
+            --blocktopia-gray: #6c757d;
+            --blocktopia-border: #dee2e6;
+            --blocktopia-success: #28a745;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,402 +25,446 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--blocktopia-dark);
+            color: var(--blocktopia-light);
+            line-height: 1.6;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        /* HEADER SUPERIOR - IDÊNTICO À BLOCKTOPIA */
+        .top-header {
+            background-color: var(--blocktopia-darker);
+            border-bottom: 1px solid rgba(255, 165, 0, 0.1);
+            padding: 8px 0;
+            font-size: 14px;
         }
 
-        /* Cores do tema Solaris MC (Amarelo/Laranja) */
-        :root {
-            --primary: #FFA500;
-            --primary-dark: #FF8C00;
-            --primary-light: #FFD700;
-            --secondary: #FF4500;
-            --dark: #222222;
-            --light: #FFFFFF;
-            --gray: #f8f9fa;
-            --gray-dark: #6c757d;
-            --border: #dee2e6;
-            --success: #28a745;
-        }
-
-        /* Header */
-        .header {
-            background-color: var(--dark);
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .header-container {
+        .top-header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header-top {
+            padding: 0 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo {
+        .server-info {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--light);
-        }
-
-        .logo-icon {
-            color: var(--primary);
-            font-size: 28px;
-        }
-
-        .logo-text {
-            color: var(--light);
-        }
-
-        .logo-text span {
-            color: var(--primary);
+            gap: 20px;
         }
 
         .server-status {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--light);
-            font-size: 14px;
         }
 
         .status-indicator {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background-color: var(--success);
-            animation: pulse 2s infinite;
+            background-color: var(--blocktopia-success);
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        .server-ip {
+            background-color: rgba(255, 165, 0, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            font-family: 'Courier New', monospace;
         }
 
-        .header-bottom {
+        .top-header-links {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
+            gap: 20px;
         }
 
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-item {
-            color: var(--light);
-            font-weight: 500;
-            font-size: 16px;
+        .top-header-links a {
+            color: var(--blocktopia-gray);
+            text-decoration: none;
             transition: color 0.3s;
         }
 
-        .nav-item:hover {
-            color: var(--primary);
+        .top-header-links a:hover {
+            color: var(--blocktopia-primary);
         }
 
-        .nav-item.active {
-            color: var(--primary);
+        /* HEADER PRINCIPAL */
+        .main-header {
+            background-color: var(--blocktopia-dark);
+            padding: 15px 0;
+            border-bottom: 3px solid var(--blocktopia-primary);
+        }
+
+        .main-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--blocktopia-primary), var(--blocktopia-secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--blocktopia-dark);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo-text span {
+            color: var(--blocktopia-primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            color: var(--blocktopia-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover {
+            color: var(--blocktopia-primary);
+        }
+
+        .main-nav a.active {
+            color: var(--blocktopia-primary);
+        }
+
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -17px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--blocktopia-primary);
         }
 
         .user-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--light);
+        .user-welcome {
+            font-size: 14px;
+            color: var(--blocktopia-gray);
         }
 
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-weight: bold;
+        .user-welcome strong {
+            color: var(--blocktopia-primary);
         }
 
         .btn-login {
-            background-color: var(--primary);
-            color: var(--dark);
+            background-color: var(--blocktopia-primary);
+            color: var(--blocktopia-dark);
             border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
+            padding: 10px 25px;
+            border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-size: 15px;
         }
 
         .btn-login:hover {
-            background-color: var(--primary-light);
+            background-color: var(--blocktopia-secondary);
+            transform: translateY(-2px);
         }
 
-        /* Main Content */
-        .main-container {
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.95)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 15px;
         }
 
-        .page-title {
-            font-size: 28px;
+        .hero h1 {
+            font-size: 48px;
             margin-bottom: 20px;
-            color: var(--dark);
+            background: linear-gradient(to right, var(--blocktopia-primary), var(--blocktopia-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        /* Products Grid */
+        .hero p {
+            font-size: 20px;
+            color: var(--blocktopia-gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* FILTROS DE CATEGORIA */
+        .category-filters {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .filters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .filters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--blocktopia-light);
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(255, 165, 0, 0.1);
+            border-color: var(--blocktopia-primary);
+        }
+
+        .filter-btn.active {
+            background-color: var(--blocktopia-primary);
+            color: var(--blocktopia-dark);
+            border-color: var(--blocktopia-primary);
+        }
+
+        /* PRODUTOS */
+        .products-section {
+            padding: 60px 0;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .product-card {
-            background-color: var(--light);
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border);
+            transition: all 0.3s;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.2);
+            transform: translateY(-10px);
+            border-color: var(--blocktopia-primary);
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.1);
         }
 
-        .product-header {
-            padding: 15px;
-            background-color: var(--gray);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .product-category {
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--blocktopia-primary);
+            color: var(--blocktopia-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 12px;
-            color: var(--gray-dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 180px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 215, 0, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-icon {
+            font-size: 60px;
+            color: var(--blocktopia-primary);
+        }
+
+        .product-content {
+            padding: 25px;
         }
 
         .product-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark);
+            font-size: 22px;
+            font-weight: 700;
             margin-bottom: 10px;
+            color: white;
         }
 
         .product-description {
-            font-size: 14px;
-            color: var(--gray-dark);
+            color: var(--blocktopia-gray);
+            font-size: 15px;
+            margin-bottom: 20px;
             line-height: 1.5;
-        }
-
-        .product-body {
-            padding: 15px;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .current-price {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .original-price {
-            font-size: 16px;
-            color: var(--gray-dark);
-            text-decoration: line-through;
         }
 
         .product-features {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .product-feature {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 10px;
             margin-bottom: 8px;
-            color: var(--dark);
+            font-size: 14px;
         }
 
         .feature-icon {
-            color: var(--primary);
+            color: var(--blocktopia-primary);
+            font-size: 12px;
         }
 
         .product-footer {
-            padding: 15px;
-            background-color: var(--gray);
-            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-current {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--blocktopia-primary);
+        }
+
+        .price-original {
+            font-size: 16px;
+            color: var(--blocktopia-gray);
+            text-decoration: line-through;
         }
 
         .btn-buy {
-            width: 100%;
-            background-color: var(--primary);
-            color: var(--dark);
+            background-color: var(--blocktopia-primary);
+            color: var(--blocktopia-dark);
             border: none;
-            padding: 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 16px;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: all 0.3s;
+            font-size: 16px;
         }
 
         .btn-buy:hover {
-            background-color: var(--primary-dark);
-            color: var(--light);
+            background-color: var(--blocktopia-secondary);
+            transform: translateY(-2px);
         }
 
-        /* Categories */
-        .categories-section {
-            margin-bottom: 40px;
-        }
-
-        .categories-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .category-card {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .category-icon {
-            font-size: 30px;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .category-name {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        /* Server Stats */
-        .server-stats {
-            background-color: var(--dark);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 40px;
-            color: var(--light);
-        }
-
-        .stats-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-        }
-
-        .stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #ccc;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--dark);
-            color: var(--light);
-            padding: 40px 0 20px;
-            border-top: 3px solid var(--primary);
+        /* FOOTER */
+        .main-footer {
+            background-color: var(--blocktopia-darker);
+            padding: 60px 0 30px;
+            border-top: 3px solid var(--blocktopia-primary);
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+        }
+
+        .footer-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-text span {
+            color: var(--blocktopia-primary);
+        }
+
+        .footer-description {
+            color: var(--blocktopia-gray);
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         .footer-section h3 {
+            color: white;
             font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .footer-links {
@@ -416,111 +472,56 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            color: #ccc;
+            color: var(--blocktopia-gray);
+            text-decoration: none;
             transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #999;
             font-size: 14px;
         }
 
-        /* Modal de Login (simplificado) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+        .footer-links a:hover {
+            color: var(--blocktopia-primary);
         }
 
-        .modal-content {
-            background-color: var(--light);
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            padding: 30px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--gray-dark);
-        }
-
-        .modal-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--dark);
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            color: var(--blocktopia-gray);
+            font-size: 14px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .btn-primary {
-            width: 100%;
-            background-color: var(--primary);
-            color: var(--dark);
-            border: none;
-            padding: 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            color: var(--light);
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .header-bottom {
-                flex-direction: column;
-                gap: 15px;
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .main-nav ul {
+                gap: 20px;
             }
             
-            .nav-menu {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-header-container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .main-header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .main-nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -528,105 +529,104 @@
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-            
-            .server-stats {
-                padding: 15px;
-            }
         }
 
-        @media (max-width: 480px) {
-            .header-top {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            
+        @media (max-width: 576px) {
             .products-grid {
                 grid-template-columns: 1fr;
             }
             
-            .categories-grid {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="header-top">
-                <div class="logo">
-                    <div class="logo-icon">☀️</div>
-                    <div class="logo-text">SOLARIS <span>MC</span></div>
-                </div>
+    <!-- Header Superior -->
+    <div class="top-header">
+        <div class="top-header-container">
+            <div class="server-info">
                 <div class="server-status">
                     <div class="status-indicator"></div>
-                    <span>Servidor Online</span>
+                    <span>Solaris MC • Online</span>
                 </div>
+                <div class="server-ip">play.solarismc.com</div>
             </div>
-            <div class="header-bottom">
-                <nav class="nav-menu">
-                    <a href="#" class="nav-item active">Loja</a>
-                    <a href="#" class="nav-item">Vantagens</a>
-                    <a href="#" class="nav-item">Moedas</a>
-                    <a href="#" class="nav-item">Unban</a>
-                    <a href="#" class="nav-item">Suporte</a>
-                </nav>
-                <div class="user-actions">
-                    <div class="user-info" id="userInfo" style="display: none;">
-                        <div class="user-avatar">JS</div>
-                        <span>Jogador123</span>
-                    </div>
-                    <button class="btn-login" id="loginBtn">Entrar</button>
-                </div>
+            <div class="top-header-links">
+                <a href="#">Suporte</a>
+                <a href="#">FAQ</a>
+                <a href="#">Termos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="main-header-container">
+            <div class="logo-container">
+                <div class="logo">S</div>
+                <div class="logo-text">SOLARIS<span>MC</span></div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Loja</a></li>
+                    <li><a href="#">Vantagens</a></li>
+                    <li><a href="#">Moedas</a></li>
+                    <li><a href="#">Cosméticos</a></li>
+                    <li><a href="#">Unban</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <div class="user-welcome">Olá, <strong>Jogador</strong></div>
+                <button class="btn-login">Entrar</button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-container">
-        <h1 class="page-title">Loja Solaris MC</h1>
-        
-        <!-- Server Stats -->
-        <section class="server-stats">
-            <h2 class="stats-title">Estatísticas do Servidor</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value">1,245</div>
-                    <div class="stat-label">Jogadores Online</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">48,920</div>
-                    <div class="stat-label">Jogadores Totais</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">30</div>
-                    <div class="stat-label">Dias Online</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">4.8</div>
-                    <div class="stat-label">Avaliação Média</div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Loja Oficial Solaris MC</h1>
+            <p>Adquira vantagens, cosméticos e itens exclusivos para melhorar sua experiência no servidor. Suporte 24/7 e entrega instantânea.</p>
+        </div>
+    </section>
+
+    <!-- Filtros de Categoria -->
+    <section class="category-filters">
+        <div class="filters-container">
+            <div class="filters-grid">
+                <button class="filter-btn active">Todos</button>
+                <button class="filter-btn">Vantagens</button>
+                <button class="filter-btn">Moedas</button>
+                <button class="filter-btn">Cosméticos</button>
+                <button class="filter-btn">Pacotes</button>
+                <button class="filter-btn">Unban</button>
             </div>
-        </section>
-        
-        <!-- Products -->
-        <section class="products-section">
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section class="products-section">
+        <div class="products-container">
             <div class="products-grid">
                 <!-- Produto 1 -->
                 <div class="product-card">
-                    <div class="product-header">
-                        <div class="product-category">Vantagem</div>
-                        <h3 class="product-title">VIP SOLAR</h3>
-                        <p class="product-description">Acesso a comandos exclusivos, itens especiais e prioridade no servidor.</p>
+                    <div class="product-badge">MAIS VENDIDO</div>
+                    <div class="product-image">
+                        <i class="fas fa-crown product-icon"></i>
                     </div>
-                    <div class="product-body">
-                        <div class="product-price">
-                            <span class="current-price">R$ 19,90</span>
-                            <span class="original-price">R$ 29,90</span>
-                        </div>
+                    <div class="product-content">
+                        <h3 class="product-title">VIP Solar</h3>
+                        <p class="product-description">Acesso a comandos exclusivos, kits especiais e prioridade no servidor.</p>
+                        
                         <ul class="product-features">
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
@@ -645,27 +645,26 @@
                                 <span>Prioridade nas filas</span>
                             </li>
                         </ul>
-                    </div>
-                    <div class="product-footer">
-                        <button class="btn-buy">
-                            <i class="fas fa-shopping-cart"></i>
-                            Comprar Agora
-                        </button>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <div class="price-current">R$ 19,90</div>
+                                <div class="price-original">R$ 29,90</div>
+                            </div>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- Produto 2 -->
                 <div class="product-card">
-                    <div class="product-header">
-                        <div class="product-category">Vantagem</div>
-                        <h3 class="product-title">MVP SOLAR</h3>
-                        <p class="product-description">Vantagens premium com todos os benefícios VIP e muito mais.</p>
+                    <div class="product-image">
+                        <i class="fas fa-gem product-icon"></i>
                     </div>
-                    <div class="product-body">
-                        <div class="product-price">
-                            <span class="current-price">R$ 39,90</span>
-                            <span class="original-price">R$ 59,90</span>
-                        </div>
+                    <div class="product-content">
+                        <h3 class="product-title">MVP Solar</h3>
+                        <p class="product-description">Vantagens premium com todas as funcionalidades VIP e muito mais.</p>
+                        
                         <ul class="product-features">
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
@@ -677,34 +676,34 @@
                             </li>
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
-                                <span>Particulas exclusivas</span>
+                                <span>Partículas exclusivas</span>
                             </li>
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
-                                <span>5 homes extras</span>
+                                <span>+5 homes extras</span>
                             </li>
                         </ul>
-                    </div>
-                    <div class="product-footer">
-                        <button class="btn-buy">
-                            <i class="fas fa-shopping-cart"></i>
-                            Comprar Agora
-                        </button>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <div class="price-current">R$ 39,90</div>
+                                <div class="price-original">R$ 59,90</div>
+                            </div>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- Produto 3 -->
                 <div class="product-card">
-                    <div class="product-header">
-                        <div class="product-category">Moedas</div>
-                        <h3 class="product-title">PACOTE DE MOEDAS</h3>
-                        <p class="product-description">5.000 moedas para usar na loja do servidor e adquirir itens.</p>
+                    <div class="product-badge">PROMOÇÃO</div>
+                    <div class="product-image">
+                        <i class="fas fa-coins product-icon"></i>
                     </div>
-                    <div class="product-body">
-                        <div class="product-price">
-                            <span class="current-price">R$ 14,90</span>
-                            <span class="original-price">R$ 19,90</span>
-                        </div>
+                    <div class="product-content">
+                        <h3 class="product-title">5.000 Moedas</h3>
+                        <p class="product-description">Moedas para usar na loja do servidor e adquirir itens exclusivos.</p>
+                        
                         <ul class="product-features">
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
@@ -716,34 +715,71 @@
                             </li>
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
-                                <span>Sem taxa adicional</span>
+                                <span>Bônus de 10%</span>
                             </li>
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
-                                <span>Bônus exclusivo</span>
+                                <span>Sem taxa adicional</span>
                             </li>
                         </ul>
-                    </div>
-                    <div class="product-footer">
-                        <button class="btn-buy">
-                            <i class="fas fa-shopping-cart"></i>
-                            Comprar Agora
-                        </button>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <div class="price-current">R$ 14,90</div>
+                                <div class="price-original">R$ 19,90</div>
+                            </div>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- Produto 4 -->
                 <div class="product-card">
-                    <div class="product-header">
-                        <div class="product-category">Unban</div>
-                        <h3 class="product-title">DESBANIMENTO</h3>
-                        <p class="product-description">Remova seu banimento e retorne ao servidor imediatamente.</p>
+                    <div class="product-image">
+                        <i class="fas fa-palette product-icon"></i>
                     </div>
-                    <div class="product-body">
-                        <div class="product-price">
-                            <span class="current-price">R$ 29,90</span>
-                            <span class="original-price">-</span>
+                    <div class="product-content">
+                        <h3 class="product-title">Kit Cosmético</h3>
+                        <p class="product-description">Asas, partículas, mascotes e muito mais para personalizar seu personagem.</p>
+                        
+                        <ul class="product-features">
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Asas personalizadas</span>
+                            </li>
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Partículas especiais</span>
+                            </li>
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Mascote exclusivo</span>
+                            </li>
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Trails coloridos</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <div class="price-current">R$ 12,90</div>
+                                <div class="price-original">-</div>
+                            </div>
+                            <button class="btn-buy">Comprar</button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Produto 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-shield-alt product-icon"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Desbanimento</h3>
+                        <p class="product-description">Remova seu banimento e retorne ao servidor imediatamente.</p>
+                        
                         <ul class="product-features">
                             <li class="product-feature">
                                 <i class="fas fa-check feature-icon"></i>
@@ -762,162 +798,153 @@
                                 <span>Garantia de funcionamento</span>
                             </li>
                         </ul>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <div class="price-current">R$ 29,90</div>
+                                <div class="price-original">-</div>
+                            </div>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
                     </div>
-                    <div class="product-footer">
-                        <button class="btn-buy">
-                            <i class="fas fa-shopping-cart"></i>
-                            Comprar Agora
-                        </button>
+                </div>
+
+                <!-- Produto 6 -->
+                <div class="product-card">
+                    <div class="product-badge">NOVO</div>
+                    <div class="product-image">
+                        <i class="fas fa-star product-icon"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pacote Supremo</h3>
+                        <p class="product-description">Todas as vantagens VIP + MVP + 10.000 moedas + kit cosmético completo.</p>
+                        
+                        <ul class="product-features">
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Todas as vantagens</span>
+                            </li>
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>10.000 moedas</span>
+                            </li>
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Kit cosmético completo</span>
+                            </li>
+                            <li class="product-feature">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Desconto de 40%</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <div class="price-current">R$ 79,90</div>
+                                <div class="price-original">R$ 129,90</div>
+                            </div>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Categories -->
-        <section class="categories-section">
-            <h2 class="categories-title">Categorias</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <div class="category-name">Vantagens</div>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <div class="category-name">Moedas</div>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-ban"></i>
-                    </div>
-                    <div class="category-name">Unban</div>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <div class="category-name">Pacotes</div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>Solaris MC</h3>
-                    <p>O melhor servidor de Minecraft com modos exclusivos e comunidade ativa. Entre agora e divirta-se!</p>
+                    <div class="footer-logo">
+                        <div class="logo">S</div>
+                        <div class="footer-logo-text">SOLARIS<span>MC</span></div>
+                    </div>
+                    <p class="footer-description">
+                        O melhor servidor de Minecraft com uma comunidade ativa e modos de jogo exclusivos. 
+                        Entre agora e divirta-se!
+                    </p>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
                     <ul class="footer-links">
                         <li><a href="#">Loja</a></li>
                         <li><a href="#">Vantagens</a></li>
                         <li><a href="#">Moedas</a></li>
+                        <li><a href="#">Cosméticos</a></li>
                         <li><a href="#">Unban</a></li>
-                        <li><a href="#">Suporte</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Suporte</h3>
                     <ul class="footer-links">
                         <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">FAQ</a></li>
                         <li><a href="#">Termos de Serviço</a></li>
                         <li><a href="#">Política de Privacidade</a></li>
                         <li><a href="#">Contato</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Conectar</h3>
-                    <p>IP do servidor: <strong>play.solarismc.com</strong></p>
-                    <p>Versão: <strong>1.8 - 1.20</strong></p>
-                    <p>Discord: <strong>discord.gg/solarismc</strong></p>
+                    <ul class="footer-links">
+                        <li><strong>IP:</strong> play.solarismc.com</li>
+                        <li><strong>Versão:</strong> 1.8 - 1.20</li>
+                        <li><strong>Discord:</strong> discord.gg/solarismc</li>
+                        <li><strong>Site:</strong> www.solarismc.com</li>
+                    </ul>
                 </div>
             </div>
-            <div class="copyright">
+            
+            <div class="footer-bottom">
                 <p>&copy; 2023 Solaris MC. Todos os direitos reservados. Este servidor não é afiliado à Mojang ou Microsoft.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal de Login -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <h3 class="modal-title">Entrar na Loja</h3>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Nome de usuário</label>
-                    <input type="text" id="username" class="form-control" placeholder="Seu nick no Minecraft">
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" class="form-control" placeholder="Sua senha">
-                </div>
-                <button type="submit" class="btn-primary">Entrar</button>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // Elementos do DOM
-        const loginBtn = document.getElementById('loginBtn');
-        const loginModal = document.getElementById('loginModal');
-        const closeModal = document.getElementById('closeModal');
-        const loginForm = document.getElementById('loginForm');
-        const userInfo = document.getElementById('userInfo');
-        
-        // Abrir modal de login
-        loginBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-        });
-        
-        // Fechar modal de login
-        closeModal.addEventListener('click', () => {
-            loginModal.style.display = 'none';
-        });
-        
-        // Fechar modal ao clicar fora
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.style.display = 'none';
-            }
-        });
-        
-        // Simular login
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            
-            if (username) {
-                // Simular login bem-sucedido
-                loginBtn.style.display = 'none';
-                userInfo.style.display = 'flex';
-                userInfo.querySelector('span').textContent = username;
-                userInfo.querySelector('.user-avatar').textContent = username.substring(0, 2).toUpperCase();
+        // Filtros de categoria
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class de todos os botões
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
                 
-                loginModal.style.display = 'none';
-                loginForm.reset();
+                // Adiciona active class ao botão clicado
+                this.classList.add('active');
                 
-                // Mostrar mensagem de sucesso
-                alert(`Bem-vindo, ${username}! Login realizado com sucesso.`);
-            } else {
-                alert('Por favor, insira um nome de usuário.');
-            }
+                // Aqui você adicionaria a lógica para filtrar os produtos
+                console.log('Filtrar por:', this.textContent);
+            });
         });
         
-        // Simular compra
-        const buyButtons = document.querySelectorAll('.btn-buy');
-        buyButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const productTitle = button.closest('.product-card').querySelector('.product-title').textContent;
-                alert(`Você selecionou: ${productTitle}\n\nRedirecionando para o pagamento...`);
+        // Botões de compra
+        document.querySelectorAll('.btn-buy').forEach(button => {
+            button.addEventListener('click', function() {
+                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                alert(`Você clicou em comprar: ${productTitle}\n\nRedirecionando para o pagamento...`);
+            });
+        });
+        
+        // Botão de login
+        document.querySelector('.btn-login').addEventListener('click', function() {
+            alert('Redirecionando para o sistema de login...');
+        });
+        
+        // Menu ativo
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('.main-nav a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                
+                this.classList.add('active');
             });
         });
     </script>
