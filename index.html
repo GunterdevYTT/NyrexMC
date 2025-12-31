@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaris MC - VIPs</title>
+    <title>Solaris MC - Acesso VIP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: #0a0a0a;
+            background-color: #0f0f0f;
             color: #f0f0f0;
             line-height: 1.6;
         }
@@ -28,7 +28,7 @@
         header {
             background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
             padding: 20px 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid #ff9800;
         }
 
         .header-content {
@@ -39,19 +39,25 @@
 
         .logo {
             font-size: 28px;
-            font-weight: 700;
+            font-weight: 800;
             color: #fff;
             display: flex;
             align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .logo i {
-            color: #d4af37;
+            color: #ff9800;
             margin-right: 10px;
+            font-size: 32px;
         }
 
         .logo span {
-            color: #d4af37;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         nav ul {
@@ -66,62 +72,85 @@
         nav a {
             color: #f0f0f0;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: #ff9800;
+            background-color: rgba(255, 152, 0, 0.1);
         }
 
         .hero {
-            padding: 100px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            padding: 120px 0;
+            background: linear-gradient(rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0.95)), url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
         }
 
         .hero-content h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero-content h1 span {
-            color: #d4af37;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-content p {
             font-size: 20px;
             max-width: 700px;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
             color: #ccc;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(to right, #d4af37, #b8941f);
+            background: linear-gradient(to right, #ff9800, #ff5722);
             color: #000;
-            padding: 16px 40px;
+            padding: 18px 45px;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
         }
 
         .features {
             padding: 100px 0;
+            background-color: #111;
         }
 
         .section-title {
@@ -132,16 +161,22 @@
         .section-title h2 {
             font-size: 36px;
             margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         .section-title h2 span {
-            color: #d4af37;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-title p {
             color: #aaa;
             max-width: 600px;
             margin: 0 auto;
+            font-size: 18px;
         }
 
         .features-grid {
@@ -155,24 +190,41 @@
             border-radius: 10px;
             padding: 40px 30px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            border-color: #d4af37;
+            border-color: #ff9800;
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
         }
 
         .feature-icon {
             font-size: 48px;
-            color: #d4af37;
             margin-bottom: 25px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .feature-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
+            color: #fff;
         }
 
         .feature-card p {
@@ -182,7 +234,7 @@
         /* Seção de Produtos VIP */
         .vip-products {
             padding: 100px 0;
-            background-color: #111;
+            background-color: #0f0f0f;
             display: none;
         }
 
@@ -201,13 +253,25 @@
             background-color: #1a1a1a;
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             border: 1px solid #333;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            border-color: #d4af37;
+            border-color: #ff9800;
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
         }
 
         .product-img {
@@ -216,8 +280,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #d4af37;
             font-size: 60px;
+            background: linear-gradient(45deg, #222, #1a1a1a);
+        }
+
+        .product-img i {
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .product-info {
@@ -227,6 +298,7 @@
         .product-info h3 {
             font-size: 22px;
             margin-bottom: 10px;
+            color: #fff;
         }
 
         .product-info p {
@@ -236,7 +308,7 @@
         }
 
         .product-price {
-            color: #d4af37;
+            color: #ff9800;
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 20px;
@@ -250,11 +322,14 @@
             padding: 12px;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .product-button:hover {
-            background-color: #d4af37;
+            background: linear-gradient(to right, #ff9800, #ff5722);
             color: #000;
         }
 
@@ -262,7 +337,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #d4af37;
+            background: linear-gradient(to right, #ff9800, #ff5722);
             color: #000;
             width: 50px;
             height: 50px;
@@ -273,18 +348,24 @@
             font-size: 22px;
             text-decoration: none;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
             z-index: 1000;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
         }
 
         .back-to-top.visible {
             opacity: 1;
         }
 
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+        }
+
         footer {
             background-color: #0a0a0a;
             padding: 60px 0 30px;
-            border-top: 1px solid #333;
+            border-top: 2px solid #ff9800;
         }
 
         .footer-content {
@@ -302,7 +383,9 @@
         .footer-column h3 {
             font-size: 20px;
             margin-bottom: 25px;
-            color: #d4af37;
+            color: #ff9800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer-column p {
@@ -325,12 +408,13 @@
             color: #fff;
             border-radius: 50%;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
 
         .social-icons a:hover {
-            background-color: #d4af37;
+            background: linear-gradient(to right, #ff9800, #ff5722);
             color: #000;
+            transform: translateY(-3px);
         }
 
         .footer-links {
@@ -348,7 +432,13 @@
         }
 
         .footer-links a:hover {
-            color: #d4af37;
+            color: #ff9800;
+        }
+
+        .footer-links i {
+            color: #ff9800;
+            margin-right: 10px;
+            width: 20px;
         }
 
         .copyright {
@@ -358,6 +448,22 @@
             border-top: 1px solid #333;
             color: #777;
             font-size: 14px;
+        }
+
+        .copyright span {
+            color: #ff9800;
+            font-weight: 600;
+        }
+
+        /* Animações */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+        }
+
+        .cta-button {
+            animation: pulse 2s infinite;
         }
 
         @media (max-width: 768px) {
@@ -385,6 +491,11 @@
             .hero-content p {
                 font-size: 18px;
             }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -394,8 +505,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-crown"></i>
-                    VIP<span>Style</span>
+                    <i class="fas fa-sun"></i>
+                    SOLARIS <span>MC</span>
                 </div>
                 <nav>
                     <ul>
@@ -414,9 +525,9 @@
         <div class="container">
             <div class="hero-content">
                 <h1>EXPERIÊNCIA <span>EXCLUSIVA</span> VIP</h1>
-                <p>Desbloqueie benefícios premium, produtos exclusivos e uma comunidade selecionada. Faça parte do estilo de vida VIP que você merece.</p>
+                <p>Desbloqueie benefícios premium, produtos exclusivos e uma comunidade selecionada. Faça parte do estilo de vida VIP que você merece no Solaris MC.</p>
                 <a href="#products" class="cta-button" id="access-products">
-                    <i class="fas fa-unlock-alt"></i> ACESSAR PRODUTOS
+                    <i class="fas fa-unlock-alt"></i> ACESSAR PRODUTOS VIP
                 </a>
             </div>
         </div>
@@ -427,7 +538,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>VANTAGENS <span>EXCLUSIVAS</span></h2>
-                <p>Descubra os benefícios de fazer parte do nosso clube VIP</p>
+                <p>Descubra os benefícios de fazer parte do nosso clube VIP Solaris MC</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -435,21 +546,21 @@
                         <i class="fas fa-gem"></i>
                     </div>
                     <h3>Produtos Exclusivos</h3>
-                    <p>Acesso a itens limitados e edições especiais disponíveis apenas para membros VIP.</p>
+                    <p>Acesso a itens limitados e edições especiais disponíveis apenas para membros VIP do Solaris MC.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shipping-fast"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Entrega Prioritária</h3>
-                    <p>Receba seus pedidos antes de todos com nosso serviço de entrega expressa exclusiva.</p>
+                    <h3>Acesso Prioritário</h3>
+                    <p>Entre primeiro em servidores, eventos e tenha acesso a recursos exclusivos antes de todos.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-crown"></i>
                     </div>
-                    <h3>Suporte Dedicado</h3>
-                    <p>Atendimento personalizado 24/7 com nossa equipe de especialistas VIP.</p>
+                    <h3>Status Especial</h3>
+                    <p>Mostre seu status VIP com tag exclusiva, itens personalizados e reconhecimento na comunidade.</p>
                 </div>
             </div>
         </div>
@@ -459,73 +570,73 @@
     <section class="vip-products" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>PRODUTOS <span>VIP</span></h2>
-                <p>Conheça nossa seleção exclusiva de produtos disponíveis apenas para membros</p>
+                <h2>PRODUTOS <span>VIP SOLARIS MC</span></h2>
+                <p>Conheça nossa seleção exclusiva de produtos disponíveis apenas para membros VIP</p>
             </div>
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas fa-watch"></i>
+                        <i class="fas fa-crown"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Relógio de Luxo Edition</h3>
-                        <p>Relógio exclusivo com acabamento em ouro 18k, limitado a 100 unidades no mundo.</p>
-                        <div class="product-price">R$ 15.999</div>
+                        <h3>VIP Diamond</h3>
+                        <p>Plano mais completo com todos os benefícios, tag exclusiva diamond e acesso vitalício.</p>
+                        <div class="product-price">R$ 149,90</div>
                         <a href="#" class="product-button">COMPRAR AGORA</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas fa-wine-bottle"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Vinho Reserva Especial</h3>
-                        <p>Vinho tinto de safra rara, engarrafado especialmente para membros VIP.</p>
-                        <div class="product-price">R$ 2.499</div>
+                        <h3>VIP Gold</h3>
+                        <p>Plano intermediário com benefícios exclusivos por 6 meses e tag gold personalizada.</p>
+                        <div class="product-price">R$ 79,90</div>
                         <a href="#" class="product-button">COMPRAR AGORA</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Mala de Viagem Premium</h3>
-                        <p>Mala executiva em couro italiano com identificação personalizada VIP.</p>
-                        <div class="product-price">R$ 8.799</div>
+                        <h3>VIP Silver</h3>
+                        <p>Plano básico com benefícios essenciais por 3 meses e tag silver para iniciantes.</p>
+                        <div class="product-price">R$ 49,90</div>
                         <a href="#" class="product-button">COMPRAR AGORA</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas fa-vest"></i>
+                        <i class="fas fa-coins"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Paletó Executivo</h3>
-                        <p>Paletó feito sob medida com tecidos exclusivos da coleção VIP outono/inverno.</p>
-                        <div class="product-price">R$ 6.299</div>
+                        <h3>Pacote Moedas</h3>
+                        <p>Pacote com 10.000 moedas para usar em lojas do servidor e recursos exclusivos.</p>
+                        <div class="product-price">R$ 39,90</div>
                         <a href="#" class="product-button">COMPRAR AGORA</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas fa-chess-queen"></i>
+                        <i class="fas fa-tshirt"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Jogo de Xadrez Luxury</h3>
-                        <p>Peças em mármore e ébano com tabuleiro em madeira nobre entalhada à mão.</p>
-                        <div class="product-price">R$ 4.899</div>
+                        <h3>Kit Cosmético</h3>
+                        <p>Kit com capas, mascotes e efeitos visuais exclusivos para personalizar sua experiência.</p>
+                        <div class="product-price">R$ 29,90</div>
                         <a href="#" class="product-button">COMPRAR AGORA</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas fa-guitar"></i>
+                        <i class="fas fa-home"></i>
                     </div>
                     <div class="product-info">
-                        <h3>Violão Assinado</h3>
-                        <p>Violão clássico com assinatura do luthier italiano Giovanni Battista, edição limitada.</p>
-                        <div class="product-price">R$ 12.499</div>
+                        <h3>Terreno VIP</h3>
+                        <p>Terreno exclusivo em área premium do servidor com recursos de construção avançados.</p>
+                        <div class="product-price">R$ 99,90</div>
                         <a href="#" class="product-button">COMPRAR AGORA</a>
                     </div>
                 </div>
@@ -538,36 +649,37 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>VIP Style</h3>
-                    <p>Oferecendo experiências exclusivas e produtos premium para clientes selecionados desde 2010.</p>
+                    <h3>Solaris MC</h3>
+                    <p>Oferecendo experiências exclusivas e produtos premium para jogadores selecionados desde 2018.</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Links Rápidos</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Vantagens</a></li>
-                        <li><a href="#products">Produtos VIP</a></li>
-                        <li><a href="#">Seja um Membro</a></li>
+                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#features"><i class="fas fa-star"></i> Vantagens</a></li>
+                        <li><a href="#products"><i class="fas fa-gem"></i> Produtos VIP</a></li>
+                        <li><a href="#"><i class="fas fa-user-plus"></i> Seja VIP</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contato</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo</li>
-                        <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
-                        <li><i class="fas fa-envelope"></i> contato@vipstyle.com</li>
-                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</li>
+                        <li><i class="fas fa-globe"></i> www.solarismc.com.br</li>
+                        <li><i class="fas fa-envelope"></i> contato@solarismc.com</li>
+                        <li><i class="fab fa-discord"></i> discord.gg/solarismc</li>
+                        <li><i class="fas fa-headset"></i> Suporte 24/7 VIP</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 VIP Style. Todos os direitos reservados.</p>
+                <p>&copy; 2025 <span>Solaris MC</span>. Todos os direitos reservados.</p>
+                <p>Este site não é afiliado à Mojang Studios. Minecraft é uma marca registrada da Mojang Studios.</p>
             </div>
         </div>
     </footer>
@@ -588,6 +700,12 @@
             
             // Rola suavemente até a seção
             productsSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Adiciona efeito visual
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = 'pulse 2s infinite';
+            }, 10);
         });
         
         // Também adiciona funcionalidade ao link do menu
@@ -633,7 +751,15 @@
                 }
             });
         });
+        
+        // Adiciona efeito de brilho ao logo
+        const logo = document.querySelector('.logo');
+        setInterval(() => {
+            logo.style.filter = 'drop-shadow(0 0 5px rgba(255, 152, 0, 0.7))';
+            setTimeout(() => {
+                logo.style.filter = 'none';
+            }, 1000);
+        }, 5000);
     </script>
 </body>
 </html>
-
