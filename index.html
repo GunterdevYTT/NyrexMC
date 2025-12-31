@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaris MC - Loja oficial</title>
+    <title>Solaris MC - Loja Oficial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,408 +13,376 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        :root {
+            --primary: #FFA500;
+            --primary-dark: #FF8C00;
+            --secondary: #FFD700;
+            --secondary-light: #FFF5CC;
+            --dark: #222222;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+            --gray-dark: #888888;
+        }
+
         body {
-            background-color: #0f0f0f;
-            color: #f0f0f0;
-            line-height: 1.6;
+            background-color: var(--gray);
+            color: var(--dark);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        /* Header e Navegação */
         header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            padding: 20px 0;
-            border-bottom: 2px solid #ff9800;
+            background-color: var(--dark);
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .header-content {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
             display: flex;
             align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2.2rem;
+        }
+
+        .logo-text {
+            color: var(--light);
+            font-size: 1.8rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .logo i {
-            color: #ff9800;
-            margin-right: 10px;
-            font-size: 32px;
-        }
-
-        .logo span {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo-text span {
+            color: var(--primary);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-        }
-
-        nav li {
-            margin-left: 30px;
+            gap: 2rem;
         }
 
         nav a {
-            color: #f0f0f0;
+            color: var(--light);
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-            padding: 5px 10px;
-            border-radius: 4px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
         }
 
         nav a:hover {
-            color: #ff9800;
-            background-color: rgba(255, 152, 0, 0.1);
+            color: var(--secondary);
         }
 
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        .cart-icon {
+            position: relative;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary);
+            color: var(--dark);
+            font-size: 0.8rem;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 120px 0;
-            background: linear-gradient(rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0.95)), url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
+            color: var(--light);
+            padding: 5rem 5%;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ff9800, #ff5722);
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .hero-content h1 {
-            font-size: 52px;
-            margin-bottom: 25px;
-            font-weight: 800;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
-        .hero-content h1 span {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 span {
+            color: var(--secondary);
         }
 
-        .hero-content p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            color: #ccc;
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            color: #000;
-            padding: 18px 45px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--dark);
             border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 4px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 165, 0, 0.3);
         }
 
-        .features {
-            padding: 100px 0;
-            background-color: #111;
+        /* Produtos */
+        .products {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 3rem;
         }
 
         .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .section-title h2 span {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
         }
 
         .section-title p {
-            color: #aaa;
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 18px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: #1a1a1a;
-            border-radius: 10px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid #333;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ff9800, #ff5722);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #ff9800;
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 25px;
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .feature-card p {
-            color: #aaa;
-        }
-
-        /* Seção de Produtos VIP */
-        .vip-products {
-            padding: 100px 0;
-            background-color: #0f0f0f;
-            display: none;
-        }
-
-        .vip-products.active {
-            display: block;
+            color: var(--gray-dark);
+            font-size: 1.1rem;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 2rem;
         }
 
         .product-card {
-            background-color: #1a1a1a;
-            border-radius: 10px;
+            background-color: var(--light);
+            border-radius: 8px;
             overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid #333;
-            position: relative;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ff9800, #ff5722);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            border-color: #ff9800;
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(255, 165, 0, 0.1);
         }
 
-        .product-img {
+        .product-image {
             height: 200px;
-            background-color: #222;
+            background-color: var(--secondary-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            background: linear-gradient(45deg, #222, #1a1a1a);
-        }
-
-        .product-img i {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--dark);
+            font-size: 4rem;
         }
 
         .product-info {
-            padding: 25px;
+            padding: 1.5rem;
         }
 
-        .product-info h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #fff;
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
 
-        .product-info p {
-            color: #aaa;
-            margin-bottom: 20px;
-            min-height: 60px;
+        .product-description {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .product-price {
-            color: #ff9800;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .product-button {
-            display: block;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-button:hover {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            color: #000;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            color: #000;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            text-decoration: none;
-            opacity: 0;
-            transition: all 0.3s;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+            margin-top: 1rem;
         }
 
-        .back-to-top.visible {
-            opacity: 1;
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
         }
 
-        .back-to-top:hover {
+        .btn-add-to-cart {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Categorias */
+        .categories {
+            padding: 3rem 5%;
+            background-color: var(--light);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: linear-gradient(to bottom right, var(--secondary-light), #FFF);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+            box-shadow: 0 10px 20px rgba(255, 165, 0, 0.1);
         }
 
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .category-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        /* Footer */
         footer {
-            background-color: #0a0a0a;
-            padding: 60px 0 30px;
-            border-top: 2px solid #ff9800;
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 4rem 5% 2rem;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
         }
 
         .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            color: #ff9800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-column h3 span {
+            color: var(--primary);
         }
 
         .footer-column p {
-            color: #aaa;
-            margin-bottom: 20px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #CCC;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
         }
 
         .social-icons a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: #333;
-            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
+            color: var(--light);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: background-color 0.3s;
         }
 
         .social-icons a:hover {
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            color: #000;
-            transform: translateY(-3px);
+            background-color: var(--primary);
+            color: var(--dark);
         }
 
         .footer-links {
@@ -422,346 +390,370 @@
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 0.8rem;
         }
 
         .footer-links a {
-            color: #aaa;
+            color: #CCC;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: #ff9800;
-        }
-
-        .footer-links i {
-            color: #ff9800;
-            margin-right: 10px;
-            width: 20px;
+            color: var(--secondary);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid #333;
-            color: #777;
-            font-size: 14px;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #AAA;
+            font-size: 0.9rem;
         }
 
-        .copyright span {
-            color: #ff9800;
-            font-weight: 600;
-        }
-
-        /* Animações */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
-        }
-
-        .cta-button {
-            animation: pulse 2s infinite;
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-
-            nav {
-                margin-top: 20px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav li {
-                margin: 0 10px 10px;
-            }
-
-            .hero-content h1 {
-                font-size: 36px;
-            }
-
-            .hero-content p {
-                font-size: 18px;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 16px;
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                z-index: 999;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 5%;
+            }
+            
+            .products, .categories {
+                padding: 3rem 5%;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-primary {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header e Navegação -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-sun"></i>
-                    SOLARIS <span>MC</span>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-sun"></i>
+                <div class="logo-text">Solaris <span>MC</span></div>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#products">Produtos</a></li>
+                    <li><a href="#categories">Categorias</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#support">Suporte</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-buttons">
+                <button class="btn-login">Entrar</button>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="cart-count">3</div>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Vantagens</a></li>
-                        <li><a href="#products" id="products-link">Produtos VIP</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1> >> Loja <span>oficial</span> << </h1>
-                <p>Loja oficial do servidor Solaris MC</p>
-                <a href="#products" class="cta-button" id="access-products">
-                    <i class="fas fa-unlock-alt"></i> Acessar produtos
-                </a>
+        <div class="hero-content">
+            <h1>Loja Oficial <span>Solaris MC</span></h1>
+            <p>Adquira os melhores itens, ranks, cosméticos e vantagens para aproveitar ao máximo sua experiência no servidor Solaris MC. Compre com segurança e tenha acesso imediato!</p>
+            <button class="btn-primary">Ver Produtos</button>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Produtos em Destaque</h2>
+            <p>Os itens mais populares da nossa loja</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <div class="product-image" style="background-color: #FFEECC;">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rank Solar</h3>
+                    <p class="product-description">Rank VIP com acesso a áreas exclusivas, comandos especiais e prioridade no servidor.</p>
+                    <div class="product-price">
+                        <span class="price">R$ 24,90</span>
+                        <button class="btn-add-to-cart">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <div class="product-image" style="background-color: #FFF0CC;">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Pacote de Gemas</h3>
+                    <p class="product-description">5.000 gemas para usar na loja do servidor. Compre itens, cosméticos e vantagens!</p>
+                    <div class="product-price">
+                        <span class="price">R$ 19,90</span>
+                        <button class="btn-add-to-cart">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <div class="product-image" style="background-color: #FFF5CC;">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Terreno VIP</h3>
+                    <p class="product-description">Terreno exclusivo no mundo VIP com localização privilegiada e recursos extras.</p>
+                    <div class="product-price">
+                        <span class="price">R$ 34,90</span>
+                        <button class="btn-add-to-cart">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produto 4 -->
+            <div class="product-card">
+                <div class="product-image" style="background-color: #FFF8CC;">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Kit Cosmético Épico</h3>
+                    <p class="product-description">Asas, partículas, mascotes e muito mais para personalizar sua experiência.</p>
+                    <div class="product-price">
+                        <span class="price">R$ 14,90</span>
+                        <button class="btn-add-to-cart">Adicionar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Vips <span>exclusivos</span></h2>
-                <p>Descubra os benefícios de fazer parte do nosso clube VIP Solaris MC</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Produtos Exclusivos</h3>
-                    <p>Acesso a itens limitados e edições especiais disponíveis apenas para membros VIP do Solaris MC.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Acesso Prioritário</h3>
-                    <p>Entre primeiro em servidores, eventos e tenha acesso a recursos exclusivos antes de todos.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>Status Especial</h3>
-                    <p>Mostre seu status VIP com tag exclusiva, itens personalizados e reconhecimento na comunidade.</p>
-                </div>
-            </div>
+    <!-- Categorias -->
+    <section class="categories" id="categories">
+        <div class="section-title">
+            <h2>Categorias</h2>
+            <p>Navegue por nossas categorias de produtos</p>
         </div>
-    </section>
-
-    <!-- VIP Products Section (hidden by default) -->
-    <section class="vip-products" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Vips <span>em jogo</span></h2>
-                <p>Conheça nossa seleção exclusiva de produtos disponíveis apenas para membros VIP</p>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="category-title">Ranks</h3>
             </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>VIP ULTRA
-                        </h3>
-                        <p>Tag ULTRA por 3 messes e itens exclusivos</p>
-                        <div class="product-price">R$ 55,90</div>
-                        <a href="#" class="product-button">COMPRAR AGORA</a>
-                    </div>
+            
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-coins"></i>
                 </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>VIP Netherite</h3>
-                        <p>Tag NETHERITE por 3 messes e itens exclusivos</p>
-                        <div class="product-price">R$ 38,00</div>
-                        <a href="#" class="product-button">COMPRAR AGORA</a>
-                    </div>
+                <h3 class="category-title">Moedas</h3>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-tshirt"></i>
                 </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>VIP DIAMANTE</h3>
-                        <p>Tag DIAMANTE por 3 messes e itens exclusivos</p>
-                        <div class="product-price">R$ 25,90</div>
-                        <a href="#" class="product-button">COMPRAR AGORA</a>
-                    </div>
+                <h3 class="category-title">Cosméticos</h3>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-home"></i>
                 </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>VIP Ferro</h3>
-                        <p>Tag Ferro por 5 messes e itens basicos</p>
-                        <div class="product-price">R$ 10,50</div>
-                        <a href="#" class="product-button">COMPRAR AGORA</a>
-                    </div>
+                <h3 class="category-title">Terrenos</h3>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-gift"></i>
                 </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>KIT MVP</h3>
-                        <p>Kit MVP é apenas para o top 1 do servidor</p>
-                        <div class="product-price">R$ 00,00</div>
-                        <a href="#" class="product-button">Indisponivel</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>Custom TAG</h3>
-                        <p>Tag customizada por 3 messes</p>
-                        <div class="product-price">R$ 19,90</div>
-                        <a href="#" class="product-button">COMPRAR AGORA</a>
-                    </div>
-                </div>
+                <h3 class="category-title">Pacotes</h3>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Solaris MC</h3>
-                    <p>Oferecendo experiências exclusivas e produtos premium para jogadores selecionados desde 2018.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                        <a href="#"><i class="fab fa-twitch"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="#features"><i class="fas fa-star"></i> Vantagens</a></li>
-                        <li><a href="#products"><i class="fas fa-gem"></i> Produtos VIP</a></li>
-                        <li><a href="#"><i class="fas fa-user-plus"></i> Seja VIP</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contato</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-globe"></i> www.solarismc.com.br</li>
-                        <li><i class="fas fa-envelope"></i> contato@solarismc.com</li>
-                        <li><i class="fab fa-discord"></i> discord.gg/solarismc</li>
-                        <li><i class="fas fa-headset"></i> Suporte 24/7 VIP</li>
-                    </ul>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Solaris <span>MC</span></h3>
+                <p>A loja oficial do servidor Solaris MC. Oferecemos produtos seguros e entregues instantaneamente. Junte-se a nossa comunidade!</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 <span>Solaris MC</span>. Todos os direitos reservados.</p>
-                <p>Este site não é afiliado à Mojang Studios. Minecraft é uma marca registrada da Mojang Studios.</p>
+            
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#products">Produtos</a></li>
+                    <li><a href="#categories">Categorias</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#support">Suporte</a></li>
+                </ul>
             </div>
+            
+            <div class="footer-column">
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Termos de Serviço</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Política de Reembolso</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Status do Servidor</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> suporte@solarismc.com</li>
+                    <li><i class="fas fa-globe"></i> www.solarismc.com</li>
+                    <li><i class="fas fa-server"></i> play.solarismc.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Solaris MC. Todos os direitos reservados. Minecraft é uma marca registrada da Mojang AB.</p>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
     <script>
-        // Função para rolar até a seção de produtos VIP
-        document.getElementById('access-products').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Mostra a seção de produtos VIP
-            const productsSection = document.getElementById('products');
-            productsSection.classList.add('active');
-            
-            // Rola suavemente até a seção
-            productsSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // Adiciona efeito visual
-            this.style.animation = 'none';
-            setTimeout(() => {
-                this.style.animation = 'pulse 2s infinite';
-            }, 10);
-        });
+        // Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
         
-        // Também adiciona funcionalidade ao link do menu
-        document.getElementById('products-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const productsSection = document.getElementById('products');
-            productsSection.classList.add('active');
-            productsSection.scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Botão "Voltar ao topo"
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('visible');
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
             } else {
-                backToTopButton.classList.remove('visible');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
         
-        backToTopButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // Suaviza todas as âncoras
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                
-                // Ignora o link para a seção de produtos (já tratado acima)
-                if (href === '#products') return;
-                
-                e.preventDefault();
-                
-                if (href !== '#') {
-                    const targetElement = document.querySelector(href);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             });
         });
         
-        // Adiciona efeito de brilho ao logo
-        const logo = document.querySelector('.logo');
-        setInterval(() => {
-            logo.style.filter = 'drop-shadow(0 0 5px rgba(255, 152, 0, 0.7))';
-            setTimeout(() => {
-                logo.style.filter = 'none';
-            }, 1000);
-        }, 5000);
+        // Adicionar ao carrinho
+        const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+        const cartCount = document.querySelector('.cart-count');
+        let count = 3;
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                count++;
+                cartCount.textContent = count;
+                
+                // Animação de confirmação
+                button.textContent = 'Adicionado!';
+                button.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    button.textContent = 'Adicionar';
+                    button.style.backgroundColor = '';
+                }, 1500);
+            });
+        });
+        
+        // Smooth scroll para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
-
